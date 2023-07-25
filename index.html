@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="./muni_logo.png">
+    <link rel="manifest" href="./manifest.json">
+    <title>IS</title>
+</head>
+<body>
+
+</body>
+
+<script>
+    if (document.cookie == "ready=true") {
+        window.location.href = 'https://is.muni.cz/auth/';
+    }
+    else {
+        document.querySelector('body').innerHTML = `
+            <div class="control_buttons">
+                <button class="button_ready">Ready</button>
+                <button id="delete_cookie">Delete Cookie</button>
+            </div>
+        </div>
+        `
+
+        const button = document.querySelector('.button_ready');
+        button.addEventListener('click',()=>{
+            document.cookie = "ready=true";
+            window.location.replace("https://is.muni.cz/auth/");
+        })
+
+        document.getElementById('delete_cookie').addEventListener('click', () => {
+            document.cookie = "ready=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        })
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./service-worker.js')
+        }
+    }
+</script>
+</html>
