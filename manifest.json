@@ -1,7 +1,7 @@
 {
     "name": "IS",
     "short_name": "IS",
-    "start_url": "/isredirect2",
+    "start_url": "/isredirect",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#000000",
